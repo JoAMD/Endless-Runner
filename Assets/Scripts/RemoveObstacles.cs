@@ -8,6 +8,5 @@ public class RemoveObstacles : MonoBehaviour
     {
         if(other.CompareTag("Obstacle"))
             Destroy(other.transform.parent.parent.gameObject);
-        // BoxCollider2D
     }
 }

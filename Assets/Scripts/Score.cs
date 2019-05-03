@@ -5,10 +5,16 @@ public class Score : MonoBehaviour
 {
 
     public Text scoreText;
+    private float startTime;
+    public SpawnObstacles spawnObstacles;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        startTime = Time.time;
+    }
+
     void Update()
     {
-        scoreText.text = Time.time.ToString();
+        scoreText.text = Mathf.Round((Time.time - startTime) / spawnObstacles.timeDiffBtwSpawn ).ToString();
     }
 }

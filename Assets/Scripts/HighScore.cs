@@ -8,24 +8,22 @@ public class HighScore : MonoBehaviour
 
     public Text text;
 
-    public Transform scoreText;
-    private float score;
-    private float highScore = 0f;
+    private int lastScore;
+    public Score scoreScript;
 
     private void Start()
     {
-        text.text = "0";
-        score = float.Parse(scoreText.GetComponent<Score>().scoreText.text);
-        if (score > highScore)
-        {
-            highScore = score;
-            text.text = score.ToString();
-        }
+        compareScore();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void compareScore()
     {
-        
+        lastScore = StaticData.lastScore;
+        if (lastScore > StaticData.highScore)
+        {
+            StaticData.highScore = lastScore;
+        }
+
+        text.text = StaticData.highScore.ToString();
     }
 }

@@ -8,9 +8,9 @@ public class SpawnObstacles : MonoBehaviour
     private int spawnStyle;
     public GameObject ObstaclePat01, ObstaclePat02, ObstaclePat12;
 
-    public float timeDiffBtwSpawn = 0.8f, nextSpawnTime = 0f;
+    public float timeDiffBtwSpawn = 2f, nextSpawnTime = 0f;
 
-    public float timeDiffBtwDecr = 1f, nextTimeDecr = 2f;
+    private float timeDiffBtwDecr = 4f, nextTimeDecr = 2f;
 
     // Update is called once per frame
     void Update()
@@ -40,5 +40,6 @@ public class SpawnObstacles : MonoBehaviour
             }
             nextSpawnTime = Time.time + timeDiffBtwSpawn;
         }
+        Debug.Log(timeDiffBtwSpawn);
     }
 }

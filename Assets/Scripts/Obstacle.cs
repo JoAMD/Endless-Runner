@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Obstacle : SpawnObstacles
 {
@@ -15,11 +16,14 @@ public class Obstacle : SpawnObstacles
 
     private float nextSpeedIncrTime;
 
+    public Score scoreScript;
+
     //public GameObject gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreScript = FindObjectOfType<Canvas>().GetComponentInChildren<Score>();
         //gameOver.SetActive(false);
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-obstacleSpeed * Time.deltaTime, 0);
         //ObstaclesHolder = GameObject.FindGameObjectWithTag("ObstaclesHolder");
@@ -49,6 +53,9 @@ public class Obstacle : SpawnObstacles
             if(other.GetComponent<PlayerController>().health <= 0)
             {
                 SceneManager.LoadScene("GameOverScene");
+
+                StaticData.lastScore = int.Parse(scoreScript.scoreText.text);
+
                 //obstacleSpeed = 0;
                 //transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-obstacleSpeed * Time.deltaTime, 0);
                 //gameOver.SetActive(true);
